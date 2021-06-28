@@ -1,0 +1,9 @@
+REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
+nvayngolts/ubuntu-tmp-file   latest    31b7faf5ec00   33 seconds ago   63.1MB
+ubuntu                       18.04     7d0d8fa37224   10 days ago      63.1MB
+hello-world                  latest    d1165f221234   3 months ago     13.3kB
+
+На основе вывода команд docker inspect <u_container_id> и  docker inspect <u_image_id>
+можно сделать вывод, что контейнер - это запущенный экземпляр образа.
+В образе содержится содержится "шаблон" системы. Он статичен.
+Контейнер - созданая из шаблона-образа система, имеющая статус работы, выделенные ресурсы.
