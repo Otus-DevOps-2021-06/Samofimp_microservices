@@ -1,0 +1,7 @@
+{
+        "folder_id": "aaaaaaaaaaaaaaaaa",
+        "service_account_key_file": "files/key.json",
+        "disk_type": "network-hdd",
+        "image_name": "unique name",
+        "source_image_id": "ubuntuid"
+}

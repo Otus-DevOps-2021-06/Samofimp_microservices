@@ -1,0 +1,12 @@
+- name: Launching application on hosts
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Start docker application
+    docker_container:
+      name: reddit
+      image: samofimp/otus-reddit:1.0
+      state: started
+      ports:
+      - "9292:9292"
