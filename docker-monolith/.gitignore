@@ -1,1 +1,9 @@
-infra/
+# Terraform directories
+*.tfstate
+*.tfstate.*.backup
+*.tfstate.backup
+*.tfvars
+infra/terraform/.terraform/
+infra/terraform/.terraform.lock.hcl
+# Packer variable file
+infra/packer/variables.json

@@ -1,0 +1,30 @@
+- name: Install docker on instance
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Installing packages required for repo
+    apt:
+      update_cache: yes
+      name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+
+  - name: Adding Docker GPG key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+
+  - name: Adding docker repo
+    apt_repository:
+      repo: deb [arch=amd64] https://download.docker.com/{{ ansible_system | lower }}/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable
+
+  - name: Installing Docker CE
+    apt:
+      update_cache: yes
+      name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
