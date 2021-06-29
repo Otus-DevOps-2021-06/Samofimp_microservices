@@ -67,3 +67,8 @@ docker-compose -p MY_PROJECT_NAME
 ~~~ bash
 docker-compose --project-name MY_PROJECT_NAME
 ~~~
+
+## Задание со *
+Добавлен файл конфигурации **docker-compose.override.yml**, который позволяет:
+* Изменять код каждого приложения, не пересобирая образ (реализовано через монтирование volume'ов с хоста).
+* Запускать puma в дебаг режима с двумя воркерами (*puma --debug -w 2*).
