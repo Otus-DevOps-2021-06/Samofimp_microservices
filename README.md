@@ -72,3 +72,20 @@ docker-compose --project-name MY_PROJECT_NAME
 Добавлен файл конфигурации **docker-compose.override.yml**, который позволяет:
 * Изменять код каждого приложения, не пересобирая образ (реализовано через монтирование volume'ов с хоста).
 * Запускать puma в дебаг режима с двумя воркерами (*puma --debug -w 2*).
+
+# Домашнее задание №12
+## Основное задание
+В файле **gitlab-ci.yml** в корне репозитория описаны этапы pipeline GitLab CI.
+
+В **gitlab-ci/docker-compose.yml** описана конфигурация для запуска.
+
+## Дополнительные задания
+### 2.7* Автоматизация развёртывания GitLab
+Для развёртывания GitLab с помощью Ansible необходимо из директории **docker-monolith/infra/ansible** запустить генерацию динамического inventory (dynamic_inventory_2.sh).
+
+Затем - запустить playbook gitlab-ci.yml.
+
+### 10.2* Автоматизация развёртывания GitLab Runner
+Для развёртывания GitLab Runner с помощью Ansible необходимо в файле **docker-monolith/infra/ansible/variables.yml** установить gitlab_token на токен для раннеров из GitLab CI по примеру из **variables.yml.example**.
+
+Затем из директории **docker-monolith/infra/ansible** необходимо запустить plabook deploy_runner.yml

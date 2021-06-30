@@ -1,0 +1,16 @@
+- name: Installing Python packages
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Install Python packages
+    apt:
+      update_cache: yes
+      name:
+      - python3
+      - python3-pip
+      install_recommends: yes
+
+  - name: Install Docker SDK
+    pip:
+      name: docker
