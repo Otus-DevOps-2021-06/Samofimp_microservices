@@ -1,0 +1,27 @@
+- name: Deploy a GitLab runner
+  hosts: all
+  become: true
+  vars_files:
+  - ./variables.yml
+
+  tasks:
+  - name: Creating runner container
+    docker_container:
+      name: gitlab-runner
+      state: started
+      restart: yes
+      image: gitlab/gitlab-runner:latest
+      volumes:
+      - /srv/gitlab-runner/config:/etc/gitlab-runner
+      - /var/run/docker.sock:/var/run/docker.sock
+      command:
+        - "register \
+          --url http://{{ ansible_host }}/ \
+          --non-interactive \
+          --locked=false \
+          --name DockerRunner2 \
+          --executor docker \
+          --docker-image alpine:latest \
+          --registration-token {{ gitlab_token }} \
+          --tag-list \"linux,xenial,ubuntu,docker\" \
+          --run-untagged"

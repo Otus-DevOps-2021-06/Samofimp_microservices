@@ -1,0 +1,5 @@
+---
+- import_playbook: install_docker_2.yml
+- import_playbook: install_python_2.yml
+- import_playbook: deploy_gitlab.yml
+
