@@ -73,7 +73,7 @@ docker-compose --project-name MY_PROJECT_NAME
 * Изменять код каждого приложения, не пересобирая образ (реализовано через монтирование volume'ов с хоста).
 * Запускать puma в дебаг режима с двумя воркерами (*puma --debug -w 2*).
 
-# Домашнее задание №12
+# Домашнее задание №20
 ## Основное задание
 В файле **gitlab-ci.yml** в корне репозитория описаны этапы pipeline GitLab CI.
 
@@ -89,3 +89,27 @@ docker-compose --project-name MY_PROJECT_NAME
 Для развёртывания GitLab Runner с помощью Ansible необходимо в файле **docker-monolith/infra/ansible/variables.yml** установить gitlab_token на токен для раннеров из GitLab CI по примеру из **variables.yml.example**.
 
 Затем из директории **docker-monolith/infra/ansible** необходимо запустить plabook deploy_runner.yml
+
+# Домашнее задание №22
+## Основное задание
+Конфигурация docker-compose теперь находится в **docker** директории.
+
+В **docker-compose.yml** помимо сервисов post_db, ui, comment, post добавлен сервис prometheus с приложением для монинторинга и node-exporter в качестве экспортера для сбора метрик с хоста.
+
+Конфигурация Prometheus находится в **monitoring/prometheus/prometheus.yml**. Там же находится Dockerfile для билда образа.
+
+Билд образов:
+~~~ bash
+/src/ui $ bash docker_build.sh
+/src/post-py $ bash docker_build.sh
+/src/comment $ bash docker_build.sh
+/monitoring/prometheus $ docker build -t <your username>/prometheus .
+~~~
+
+Запуск сервисов производится из директории **docker** с помощью:
+~~~ bash
+docker-compose up -d
+~~~.
+
+## Дополнительное задание
+В Prometheus добавлен мониторинг MongoDB c помощью экспортера bitnami/mongodb-exporter.
