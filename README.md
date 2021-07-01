@@ -109,13 +109,16 @@ docker-compose --project-name MY_PROJECT_NAME
 Запуск сервисов производится из директории **docker** с помощью:
 ~~~ bash
 docker-compose up -d
-~~~.
+~~~
 
 ## Дополнительное задание
 В Prometheus добавлен мониторинг MongoDB c помощью экспортера bitnami/mongodb-exporter.
 
 Ссылки на образы в Docker Hub:
 [Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
+
 [Post](https://hub.docker.com/repository/docker/samofimp/post)
+
 [Comment](https://hub.docker.com/repository/docker/samofimp/comment)
+
 [UI](https://hub.docker.com/repository/docker/samofimp/ui)
