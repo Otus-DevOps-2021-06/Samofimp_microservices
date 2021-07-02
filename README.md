@@ -129,11 +129,11 @@ docker-compose up -d
 
 Ссылки на образы в Docker Hub:
 
-*[UI](https://hub.docker.com/repository/docker/samofimp/ui)
-*[Comment](https://hub.docker.com/repository/docker/samofimp/comment)
-*[Post](https://hub.docker.com/repository/docker/samofimp/post)
-*[Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
-*[AlertManager](https://hub.docker.com/repository/docker/samofimp/alertmanager)
+* [UI](https://hub.docker.com/repository/docker/samofimp/ui)
+* [Comment](https://hub.docker.com/repository/docker/samofimp/comment)
+* [Post](https://hub.docker.com/repository/docker/samofimp/post)
+* [Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
+* [AlertManager](https://hub.docker.com/repository/docker/samofimp/alertmanager)
 
-## Дополнительные задания
-* Добавлен Makefile для сборки и публикации образов
+## Дополнительное задание
+* Добавлен Makefile для сборки и публикации образов. Запуск с помощью команды *make* из корня репозитория.
