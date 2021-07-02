@@ -134,3 +134,6 @@ docker-compose up -d
 *[Post](https://hub.docker.com/repository/docker/samofimp/post)
 *[Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
 *[AlertManager](https://hub.docker.com/repository/docker/samofimp/alertmanager)
+
+## Дополнительные задания
+* Добавлен Makefile для сборки и публикации образов
