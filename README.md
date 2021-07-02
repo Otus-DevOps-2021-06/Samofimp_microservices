@@ -115,10 +115,25 @@ docker-compose up -d
 В Prometheus добавлен мониторинг MongoDB c помощью экспортера bitnami/mongodb-exporter.
 
 Ссылки на образы в Docker Hub:
-[Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
 
-[Post](https://hub.docker.com/repository/docker/samofimp/post)
+* [Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
+* [Post](https://hub.docker.com/repository/docker/samofimp/post)
+* [Comment](https://hub.docker.com/repository/docker/samofimp/comment)
+* [UI](https://hub.docker.com/repository/docker/samofimp/ui)
 
-[Comment](https://hub.docker.com/repository/docker/samofimp/comment)
+# Домашнее задание №23
+## Основное задание
+Конфигурация docker-compose для приложения находится по-прежнему в **docker/docker-compose.yml**. Конфигурация docker-compose для мониторинга находится теперь в **docker/docker-compose-monitoring.yml**.
 
-[UI](https://hub.docker.com/repository/docker/samofimp/ui)
+Были добавлены cAdvisor UI, Grafana и алертинг с помощью AlertManager, интегрированный со Slack.
+
+Ссылки на образы в Docker Hub:
+
+* [UI](https://hub.docker.com/repository/docker/samofimp/ui)
+* [Comment](https://hub.docker.com/repository/docker/samofimp/comment)
+* [Post](https://hub.docker.com/repository/docker/samofimp/post)
+* [Prometheus](https://hub.docker.com/repository/docker/samofimp/prometheus)
+* [AlertManager](https://hub.docker.com/repository/docker/samofimp/alertmanager)
+
+## Дополнительное задание
+* Добавлен Makefile для сборки и публикации образов. Запуск с помощью команды *make* из корня репозитория.
