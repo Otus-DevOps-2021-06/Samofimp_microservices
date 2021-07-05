@@ -10,6 +10,7 @@ builder:
 	cd src/comment; bash docker_build.sh
 	cd monitoring/alertmanager; docker build -t $(USER_NAME)/alertmanager .
 	cd monitoring/prometheus; docker build -t $(USER_NAME)/prometheus .
+	cd logging/fluentd; docker build -t $(USER_NAME)/fluentd .
 
 pusher:
 	docker login
@@ -18,3 +19,4 @@ pusher:
 	docker push $(USER_NAME)/post
 	docker push $(USER_NAME)/prometheus
 	docker push $(USER_NAME)/alertmanager
+	docker push $(USER_NAME)/logging
