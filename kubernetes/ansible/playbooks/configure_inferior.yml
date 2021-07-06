@@ -1,0 +1,13 @@
+- name: Connect node2 to Kubernetes cluster
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Creating join commands
+    command: kubeadm token create --print-join-command
+    register: join_worker_command
+    when: inventory_hostname == "node1"
+
+  - name: Binding worker to cluster
+    shell: "{{ hostvars['node1'].join_worker_command.stdout }}"
+    when: inventory_hostname == "node2"
