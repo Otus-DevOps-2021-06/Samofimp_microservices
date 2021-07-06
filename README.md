@@ -145,3 +145,17 @@ docker-compose up -d
 
 ## Дополнительное задание
 * 8.3* Добавлен дополнительный Grok-шаблон парсинга логов UI-сервиса.
+
+# Домашнее задание №27
+## Основное задание
+* Установка Kubernetes на инстансах Yandex Cloud по [данной инструкции](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl).
+* Инициализация control plane на одном из хостов:
+~~~ bash
+kubeadm init --apiserver-cert-extra-sans=<external-master-ip> --apiserver-advertise-address=0.0.0.0 --control-plane-endpoint=<external-master-ip> --pod-network-cidr=10.244.0.0/16
+~~~
+* Добавление worker-ноды с помощью токена, полученного после выполнения предыдущей команды.
+* Установка сетевого планига Calico [по инструкции](https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises).
+* Применение манифестов Kubernetes (из директории **kubernetes/reddit**) с помощью команды *kubectl apply -f \<filename>*.
+
+## Дополнительное задание
+Описана установка кластера с помощью Terraform и Ansible, манифесты находятся в директориях **kubernetes/terraform** и **kubernetes/ansible** соответственно.

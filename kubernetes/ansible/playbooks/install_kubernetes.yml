@@ -1,0 +1,31 @@
+- name: Install kubernetes on instance
+  hosts: all
+  become: true
+
+  tasks:
+  - name: Adding Kubernetes GPG key
+    apt_key:
+      url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+      keyring: /usr/share/keyrings/kubernetes-archive-keyring.gpg
+
+  - name: Adding kubernetes repo
+    apt_repository:
+      repo: deb [signed-by=/usr/share/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main
+
+  - name: Installing Kubernetes packages
+    apt:
+      update_cache: yes
+      name:
+      - kubelet
+      - kubeadm
+      - kubectl
+
+  - name: Holding kubelet package
+    dpkg_selections:
+      name: kubelet
+      selection: hold
+
+  - name: Holding kubeadm package
+    dpkg_selections:
+      name: kubeadm
+      selection: hold

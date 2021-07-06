@@ -1,0 +1,7 @@
+cloud_id                 = "<cloud identificator>"
+folder_id                = "<folder identificator>"
+image_id                 = "<image identificator>"
+public_key_path          = "<path to your public key>"
+subnet_id                = "<identificator of the used subnet>"
+service_account_key_file = "<path to Yandex generated key>"
+private_key_file         = "<path to your private key>"

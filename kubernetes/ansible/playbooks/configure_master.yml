@@ -1,0 +1,41 @@
+- name: Configuring master node
+  hosts: node1
+  become: true
+
+  tasks:
+  - name: Holding kubectl
+    dpkg_selections:
+      name: kubectl
+      selection: hold
+
+  - name: Initializing kubeadm
+    shell: kubeadm init --apiserver-cert-extra-sans="{{ ansible_host }}" --apiserver-advertise-address=0.0.0.0 --control-plane-endpoint="{{ ansible_host }}" --pod-network-cidr=10.244.0.0/16
+
+  - name: Copying Calico add-on file to the node
+    copy:
+      src: ../deployment_files/calico.yaml
+      dest: $HOME/calico.yaml
+
+  - name: Get user id
+    command: id -u
+    register: user_id
+
+  - name: Get group id
+    command: id -g
+    register: group_id
+
+  - name: Ensuring Kubernetes configuration directory exists
+    file:
+      path: $HOME/.kube
+      state: directory
+
+  - name: Copying Kubernetes configuration file to home directory
+    copy:
+      remote_src: yes
+      src: /etc/kubernetes/admin.conf
+      dest: $HOME/.kube/config
+      owner: "{{ user_id.stdout }}"
+      group: "{{ group_id.stdout }}"
+
+  - name: Install Kubernetes add-on
+    shell: kubectl apply -f $HOME/calico.yaml
