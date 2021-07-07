@@ -159,3 +159,23 @@ kubeadm init --apiserver-cert-extra-sans=<external-master-ip> --apiserver-advert
 
 ## Дополнительное задание
 Описана установка кластера с помощью Terraform и Ansible, манифесты находятся в директориях **kubernetes/terraform** и **kubernetes/ansible** соответственно.
+
+# Домашнее задание №28
+Произведено развёртывание локального окружения для работы с Kubernetes с помощью Minikube, а также полноценного Kubernetes-кластера в Yandex Cloud (скриншоты в папке **screenshots** - **kubernetes-2-1.png** и **kubernetes-2-2.png**).
+1. Запуск Minikube-кластера:
+~~~bash
+minikube start --kubernetes-version 1.19.7
+~~~
+2. Применение конфигураций ресурсов Deployment, Service, Namespace (запускается из корня данного репозитория):
+~~~bash
+kubectl apply -f ./kubernetes/reddit/ -n dev
+~~~
+3. Получение внешнего IP-адреса нод кластера:
+~~~bash
+kubectl get nodes -o wide
+~~~
+Получение порта публикации сервиса ui
+~~~bash
+kubectl describe service ui -n dev | grep NodePort
+~~~
+Таким образом, открыть приложение можно по адресу http://\<node-ip\>:\<NodePort\>.
