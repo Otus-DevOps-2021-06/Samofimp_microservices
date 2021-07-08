@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mongo-pv-fast
+spec:
+  StorageClassName: yc-network-ssd
+  capacity:
+    storage: 4Gi
+  accessModes:
+  - ReadWriteOnce
+  csi:
+    driver: disk-csi-driver.mks.ycloud.io
+    fsType: ext4
+    volumeHandle: fhmsvnfquoskij5168cr

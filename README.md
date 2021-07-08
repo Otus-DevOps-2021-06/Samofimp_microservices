@@ -192,7 +192,7 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=<your ip address>"
 ~~~
 3. Описана сетевая политика (**kubernetes/reddit/mongo-network-policy.yml**) для ограничения трафика, поступающего к MongoDB, кроме сервисов post и comment.
-4. Описан ресурс дискового хранилища (**kubernetes/reddit/mongo-pv.yml**) для хранения данных БД, а также запрос на выдачу ресурса (**kubernetes/reddit/mongo-pvc.yml**).
+4. Описан ресурс дискового хранилища (**kubernetes/reddit/mongo-volume.yml**) для хранения данных БД, а также запрос на выдачу ресурса (**kubernetes/reddit/mongo-claim.yml**).
 
 ## Дополнительное задание
 Объект Secret описан в виде Kubernetes-манифеста (**kubernetes/reddit/ui-ingress-secret.yml**). Ключ и сертификат зашифрованы по стандарту Base64.
