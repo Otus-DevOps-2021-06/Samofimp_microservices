@@ -179,3 +179,24 @@ kubectl get nodes -o wide
 kubectl describe service ui -n dev | grep NodePort
 ~~~
 Таким образом, открыть приложение можно по адресу http://\<node-ip\>:\<NodePort\>.
+
+# Домашнее задание №29
+## Основное задание
+1. Описан Ingress Controller (**kubernetes/reddit/ui-ingress.yml**).
+Установка nginx ingress:
+~~~bash
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/cloud/deploy.yaml
+~~~
+2. Добавлен Secret для подключения к приложению по TLS по самоподписанному сертификату.
+~~~bash
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=<your ip address>"
+~~~
+3. Описана сетевая политика (**kubernetes/reddit/mongo-network-policy.yml**) для ограничения трафика, поступающего к MongoDB, кроме сервисов post и comment.
+4. Описан ресурс дискового хранилища (**kubernetes/reddit/mongo-volume.yml**) для хранения данных БД, а также запрос на выдачу ресурса (**kubernetes/reddit/mongo-claim.yml**).
+
+## Дополнительное задание
+Объект Secret описан в виде Kubernetes-манифеста (**kubernetes/reddit/ui-ingress-secret.yml**). Ключ и сертификат зашифрованы по стандарту Base64.
+~~~bash
+openssl base64 -in tls.crt -out tls64.crt
+openssl base64 -in tls.key -out tls64.key
+~~~
