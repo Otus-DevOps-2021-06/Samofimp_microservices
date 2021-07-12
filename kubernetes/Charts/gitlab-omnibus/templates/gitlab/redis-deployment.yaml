@@ -10,6 +10,7 @@ metadata:
 spec:
   selector:
     matchLabels:
+      name: {{ template "redis.fullname" . }}
       app: {{ template "fullname" . }}
   replicas: 1
   template:
