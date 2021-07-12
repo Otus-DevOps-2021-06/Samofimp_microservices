@@ -4,10 +4,10 @@ metadata:
   name: default-http-backend
   namespace: nginx-ingress
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: default-http-backend
-  replicas: 1
   template:
     metadata:
       labels:
