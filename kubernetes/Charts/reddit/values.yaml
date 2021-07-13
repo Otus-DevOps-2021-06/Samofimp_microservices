@@ -1,0 +1,23 @@
+comment:
+  image:
+    repository: samofimp/comment
+    tag: latest
+  service:
+    externalPort: 9292
+
+post:
+  image:
+    repository: samofimp/post
+    tag: latest
+  service:
+    externalPort: 5000
+
+ui:
+  image:
+    repository: samofimp/ui
+    tag: latest
+  service:
+    externalPort: 9292
+
+mongodb:
+  usePassword: false

@@ -200,3 +200,13 @@ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 openssl base64 -in tls.crt -out tls64.crt
 openssl base64 -in tls.key -out tls64.key
 ~~~
+
+# Домашнее задание №30
+## Основное задание
+1. Добавлен Chart для развёртывания GitLab CI (**kubernetes/Charts/gitlab-omnibus**).
+2. Произведён запуск CI/CD конвейера в Kubernetes.
+Конфигурации GitLab CI для компонентов приложения:
+* **src/ui/.gitlab-ci.yml** (Helm 2 + Tiller Chart)
+* **src/post/.gitlab-ci.yml** (Helm 3)
+* **src/comment/.gitlab-ci.yml** (Helm 2 + Tiller Plugin)
+* **kubernetes/Charts/.gitlab-ci.yml** (reddit-deploy)
