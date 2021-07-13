@@ -203,10 +203,24 @@ openssl base64 -in tls.key -out tls64.key
 
 # Домашнее задание №30
 ## Основное задание
-1. Добавлен Chart для развёртывания GitLab CI (**kubernetes/Charts/gitlab-omnibus**).
+1. Добавлен chart для развёртывания GitLab CI (**kubernetes/Charts/gitlab-omnibus**).
 2. Произведён запуск CI/CD конвейера в Kubernetes.
 Конфигурации GitLab CI для компонентов приложения:
 * **src/ui/.gitlab-ci.yml** (Helm 2 + Tiller Chart)
 * **src/post/.gitlab-ci.yml** (Helm 3)
 * **src/comment/.gitlab-ci.yml** (Helm 2 + Tiller Plugin)
 * **kubernetes/Charts/.gitlab-ci.yml** (reddit-deploy)
+
+# Домашнее задание №31
+## Основное задание
+1. Добавлен chart Prometheus для мониторинга (**kubernetes/Charts/prometheus**).
+Установка:
+~~~bash
+helm upgrade prometheus . -f custom_values.yml --install
+~~~
+2. Добавлен chart Kibana для логирования (**kubernetes/Charts/kibana**).
+Установка:
+~~~bash
+helm upgrade kibana . -f values.yml --install
+~~~
+3. Добавлены Kubernetes-манифесты для ElasticSearch и Fluentd (**kubernetes/efk**).
